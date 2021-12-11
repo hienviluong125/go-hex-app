@@ -3,6 +3,3 @@
 
 # Env vars
 .env
-
-# Logger
-go-hex-app.log

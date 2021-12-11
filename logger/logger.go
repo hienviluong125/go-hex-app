@@ -15,7 +15,7 @@ func init() {
 
 	cfg := zap.NewProductionConfig()
 	cfg.OutputPaths = []string{
-		"go-hex-app.log",
+		"/var/log/go-hex-app/app_log.log",
 	}
 	log, err = cfg.Build(zap.AddCallerSkip(1))
 	// log, err = zap.NewProduction(zap.AddCallerSkip(1))

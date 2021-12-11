@@ -13,7 +13,12 @@ var log *zap.Logger
 func init() {
 	var err error
 
-	log, err = zap.NewProduction(zap.AddCallerSkip(1))
+	cfg := zap.NewProductionConfig()
+	cfg.OutputPaths = []string{
+		"go-hex-app.log",
+	}
+	log, err = cfg.Build(zap.AddCallerSkip(1))
+	// log, err = zap.NewProduction(zap.AddCallerSkip(1))
 
 	if err != nil {
 		panic(err)

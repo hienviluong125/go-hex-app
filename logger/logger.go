@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"go.uber.org/zap"
 )
@@ -14,11 +15,9 @@ func init() {
 	var err error
 
 	cfg := zap.NewProductionConfig()
-	cfg.OutputPaths = []string{
-		"/var/log/go-hex-app/app_log.log",
-	}
+
 	log, err = cfg.Build(zap.AddCallerSkip(1))
-	// log, err = zap.NewProduction(zap.AddCallerSkip(1))
+	cfg.OutputPaths = []string{os.Getenv("LOGGER_DIR")}
 
 	if err != nil {
 		panic(err)
